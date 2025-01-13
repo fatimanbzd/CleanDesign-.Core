@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Infrastructure
+namespace Ecommerce.Infrastructure.EntityConfigurations
 {
-    internal class EcommerceContextSeed
+    internal class RoleConfiguration
     {
     }
 }

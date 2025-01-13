@@ -1,15 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EntityConfigurations\" />
-    <Folder Include="Extentions\" />
+    <ProjectReference Include="..\..\Ecommerce.Domain\Ecommerce.Domain.csproj" />
+    <ProjectReference Include="..\..\Ecommerce.Persistence\Ecommerce.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Messaging\" />
+    <Folder Include="Caching\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
   </ItemGroup>
 
 </Project>

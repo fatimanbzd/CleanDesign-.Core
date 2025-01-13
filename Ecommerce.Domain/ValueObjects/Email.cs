@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Domain.SeedWork
+namespace Ecommerce.Domain.ValueObjects
 {
-    public interface IGenericRepository
+    internal class Email
     {
     }
 }

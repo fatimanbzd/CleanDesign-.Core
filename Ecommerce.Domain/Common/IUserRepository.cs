@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Domain.SeedWork
+namespace Ecommerce.Domain.Common
 {
-    public interface IGenericRepository
+    public interface IUserRepository
     {
     }
 }

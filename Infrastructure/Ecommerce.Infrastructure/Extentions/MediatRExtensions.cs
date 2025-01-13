@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Domain.SeedWork
+namespace Ecommerce.Infrastructure.Extentions
 {
-    public interface IGenericRepository
+    internal class MediatRExtensions
     {
     }
 }
