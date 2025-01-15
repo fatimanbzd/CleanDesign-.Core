@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Infrastructure.Extentions
+namespace Ecommerce.Application.Users.Queries.GetUserById
 {
-    internal class MediatRExtensions
+    internal class GetUserQueryHandler
     {
     }
 }

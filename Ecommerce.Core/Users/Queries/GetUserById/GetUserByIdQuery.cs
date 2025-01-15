@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Domain.ValueObjects
+namespace Ecommerce.Application.Users.Queries.GetUserById
 {
-    internal class Email
+    internal class GetUserByIdQuery
     {
     }
 }

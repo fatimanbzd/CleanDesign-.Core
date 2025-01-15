@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ecommerce.Domain.SeedWork
+namespace Ecommerce.Application.Users.Commands
 {
-    internal class Entity
+    internal class GetUserCommand
     {
     }
 }

@@ -1,41 +1,34 @@
-﻿using Ecommerce.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ecommerce.Domain.Aggregates
+namespace Ecommerce.Domain.Entity
 {
-    public class User
+    public sealed class User
     {
         [Key]
-
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public required string Email { get; set; }
         public required string PasswordHash { get; set; }
-        public string? Phone { get; set; }
-        public EnumUserType UserType { get; set; }
-        public User(string email, string passwordHash, string firstName, string lastName)
+        public required string? Phone { get; set; }
+        public required EnumUserType UserType { get; set; }
+        public User(string email, string passwordHash, string firstName, string lastName, string phone, EnumUserType userType)
         {
             Email = email;
             PasswordHash = passwordHash;
             FirstName = firstName;
             LastName = lastName;
-
+            Phone = phone;
+            UserType = userType;
         }
-
-
     }
-}
 
-public enum EnumUserType
-{
-    Administrator = 1,
-    Editor = 2,
-    General = 3
-}
+    public enum EnumUserType
+    {
+        Administrator = 1,
+        Editor = 2,
+        General = 3
+    }
+
 }

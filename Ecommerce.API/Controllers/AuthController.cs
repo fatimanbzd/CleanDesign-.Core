@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ecommerce.API.DTOs.UserDto;
+using Ecommerce.Domain.Common;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.API.Controllers
 {
@@ -6,9 +8,16 @@ namespace Ecommerce.API.Controllers
     [Route("api/auth")]
     public class AuthController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IUnitOfWork _unitOfWork;
+        public AuthController(IUnitOfWork unitOfWork)
         {
-            return View();
+            _unitOfWork = unitOfWork;
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> logIn(LoginDto loginModel)
+        {
+            return null;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Ecommerce.Domain.Aggregates;
+﻿using Ecommerce.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Domain.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserRepository: IGenericRepository<User>
     {
         Task<User> GetByEmailAsync(string email);
-        Task<bool> ExistsByEmailAsync(string email);
-        Task AddAsync(User user);
     }
 }
