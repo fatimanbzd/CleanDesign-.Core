@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="services\" />
+    <Compile Remove="services\GenericServiceAsync.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="services\GenericServiceAsync.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

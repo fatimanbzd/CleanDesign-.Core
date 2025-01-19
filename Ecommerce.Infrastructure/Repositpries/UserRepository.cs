@@ -1,5 +1,5 @@
 ﻿
-using Ecommerce.Domain.Entity;
+using Ecommerce.Domain.Aggrigates;
 using Ecommerce.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,8 +16,26 @@ namespace Ecommerce.Infrastructure.Repositories
 
         public async Task<User> GetByEmailAsync(string email)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return await _dbContext.Users.AsTracking().SingleAsync(u => u.Email == email);
+        }
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _dbContext.Dispose();
+                }
+            }
+            this.disposed = true;
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

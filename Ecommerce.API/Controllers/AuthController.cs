@@ -1,5 +1,5 @@
 ﻿using Ecommerce.API.DTOs.UserDto;
-using Ecommerce.Domain.Common;
+using Ecommerce.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.API.Controllers
@@ -15,9 +15,9 @@ namespace Ecommerce.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> logIn(LoginDto loginModel)
+        public Task<IActionResult> logIn(LoginDto loginModel)
         {
-            return null;
+            return Task.FromResult<IActionResult>(Ok());
         }
     }
 }

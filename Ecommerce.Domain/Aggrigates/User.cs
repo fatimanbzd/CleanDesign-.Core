@@ -1,18 +1,21 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce.Domain.Entity
+namespace Ecommerce.Domain.Aggrigates
 {
     public sealed class User
     {
         [Key]
         public int Id { get; set; }
-        public required string FirstName { get; set; }
-        public required string LastName { get; set; }
-        public required string Email { get; set; }
-        public required string PasswordHash { get; set; }
-        public required string? Phone { get; set; }
-        public required EnumUserType UserType { get; set; }
+       
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        [Required]
+        public  string Email { get; set; }
+        public  string PasswordHash { get; set; }
+        public string? Phone { get; set; }
+        [Required]
+        public EnumUserType UserType { get; set; }
         public User(string email, string passwordHash, string firstName, string lastName, string phone, EnumUserType userType)
         {
             Email = email;
@@ -27,8 +30,8 @@ namespace Ecommerce.Domain.Entity
     public enum EnumUserType
     {
         Administrator = 1,
-        Editor = 2,
-        General = 3
+        Merchant = 2,
+        Customer = 3
     }
 
 }

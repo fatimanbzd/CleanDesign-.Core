@@ -1,4 +1,4 @@
-﻿using Ecommerce.Domain.Entity;
+﻿using Ecommerce.Domain.Aggrigates;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infrastructure

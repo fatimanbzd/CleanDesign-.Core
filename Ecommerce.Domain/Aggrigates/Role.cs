@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace Ecommerce.Domain.Entity
+namespace Ecommerce.Domain.Aggrigates
 {
     public class Role
     {
         [Key]
         public int Id{ get; set; }
-        public required string Name { get; set; }
+        [Required]
+        public string Name { get; set; }
     }
 }

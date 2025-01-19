@@ -1,9 +1,9 @@
-﻿
-using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using System.Linq.Expressions;
 
-namespace Ecommerce.Infrastructure.Repositories
+namespace Ecommerce.Infrastructure
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
@@ -21,9 +21,16 @@ namespace Ecommerce.Infrastructure.Repositories
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync(bool tracked = true)
         {
-            return await _dbSet.ToListAsync();
+            IQueryable<T> query = _dbSet;
+
+            if (!tracked)
+            {
+                query = query.AsNoTracking();
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
@@ -36,19 +43,27 @@ namespace Ecommerce.Infrastructure.Repositories
             await _dbSet.AddAsync(entity);
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             _dbSet.Update(entity);
+            await SaveAsync();
         }
 
-        public void Remove(T entity)
+        public async Task Remove(int id)
         {
-            _dbSet.Remove(entity);
+            var entityToDelete = await _dbSet.FindAsync(id);
+
+            if (entityToDelete != null)
+            {
+                _dbSet.Remove(entityToDelete);
+                await SaveAsync();
+            }
+
         }
 
-        public async  Task SaveAsync()
+        public async Task SaveAsync()
         {
-          return await _dbSet.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }
