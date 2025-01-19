@@ -1,7 +1,7 @@
 ﻿using Ecommerce.API.DTOs.UserDto;
 using Ecommerce.API.IServices;
-using Ecommerce.Domain;
 using Ecommerce.Domain.Aggrigates;
+using Ecommerce.Domain.Interfaces;
 
 namespace Ecommerce.API.services
 {

@@ -1,6 +1,7 @@
 ﻿
 using Ecommerce.Domain.Aggrigates;
 using Ecommerce.Domain.Interfaces;
+using Ecommerce.Infrastructure.Repositpries;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infrastructure.Repositories

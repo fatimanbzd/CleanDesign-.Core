@@ -1,9 +1,9 @@
-﻿using Ecommerce.Domain;
+﻿using Ecommerce.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq.Expressions;
 
-namespace Ecommerce.Infrastructure
+namespace Ecommerce.Infrastructure.Repositpries
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

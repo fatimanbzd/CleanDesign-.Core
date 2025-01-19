@@ -3,8 +3,9 @@ using System.Text;
 using Ecommerce.API.IServices;
 using Ecommerce.API.services;
 using Ecommerce.Core.Repositories;
-using Ecommerce.Domain;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure;
+using Ecommerce.Infrastructure.Repositpries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 

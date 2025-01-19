@@ -1,5 +1,5 @@
-﻿using Ecommerce.Domain;
-using Ecommerce.Domain.Aggrigates;
+﻿using Ecommerce.Domain.Aggrigates;
+using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure;
 using Ecommerce.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;

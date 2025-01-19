@@ -1,5 +1,5 @@
 ﻿using Ecommerce.API.DTOs.UserDto;
-using Ecommerce.Domain;
+using Ecommerce.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.API.Controllers
