@@ -1,4 +1,6 @@
 ﻿using Ecommerce.API.DTOs.UserDto;
+using Ecommerce.API.IServices;
+using Ecommerce.API.services;
 using Ecommerce.Domain;
 using Ecommerce.Domain.Aggrigates;
 using Microsoft.AspNetCore.Identity;
@@ -10,10 +12,10 @@ namespace Ecommerce.API.Controllers
     [Route("api/user")]
     public class UserController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public UserController(IUnitOfWork unitOfWork)
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
         {
-            _unitOfWork = unitOfWork;
+            _userService = userService;
         }
 
         [HttpPost]
@@ -22,8 +24,7 @@ namespace Ecommerce.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _unitOfWork.GenericRepository<UserDto>().AddAsync(user);
-                await _unitOfWork.SaveChangesAsync();
+                await _userService.AddUser(user);
 
                 return Ok(true);
             }
