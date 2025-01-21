@@ -1,12 +1,13 @@
 ﻿
 using Ecommerce.Domain.Aggrigates;
-using Ecommerce.Domain.Interfaces;
+using Ecommerce.Domain.Core.Repositories;
+using Ecommerce.Infrastructure.Data;
 using Ecommerce.Infrastructure.Repositpries;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infrastructure.Repositories
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         private readonly EcommerceDbContext _dbContext;
         public UserRepository(EcommerceDbContext context) : base(context)

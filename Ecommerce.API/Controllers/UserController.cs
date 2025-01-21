@@ -1,9 +1,5 @@
-﻿using Ecommerce.API.DTOs.UserDto;
-using Ecommerce.API.IServices;
-using Ecommerce.API.services;
-using Ecommerce.Domain;
-using Ecommerce.Domain.Aggrigates;
-using Microsoft.AspNetCore.Identity;
+﻿using Ecommerce.API.IServices;
+using Ecommerce.Application.Models.DTOs.UserDto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.API.Controllers
@@ -30,6 +26,6 @@ namespace Ecommerce.API.Controllers
             }
             return BadRequest(false);
         }
-  
+
     }
 }

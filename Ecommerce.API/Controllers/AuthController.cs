@@ -1,5 +1,6 @@
-﻿using Ecommerce.API.DTOs.UserDto;
-using Ecommerce.Domain.Interfaces;
+﻿
+using Ecommerce.Application.Models.DTOs.UserDto;
+using Ecommerce.Domain.Core.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.API.Controllers
