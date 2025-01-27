@@ -2,7 +2,7 @@
 
 namespace Ecommerce.Domain.Core.Repositories
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork: IDisposable
     {
         Task SaveChangesAsync();
         Task RollBackChangesAsync();

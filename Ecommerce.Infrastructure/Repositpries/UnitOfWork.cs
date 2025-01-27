@@ -48,5 +48,9 @@ namespace Ecommerce.Infrastructure.Repositpries
         {
             await _context.Database.RollbackTransactionAsync();
         }
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
     }
 }

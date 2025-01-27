@@ -25,10 +25,7 @@ namespace Ecommerce.Infrastructure.Services
         {
             try
             {
-                if (_config == null)
-                {
-                    throw new ArgumentNullException(nameof(_config));
-                }
+       
                 // from and to addresses are required
                 if (string.IsNullOrWhiteSpace(email.From) || string.IsNullOrWhiteSpace(email.To))
                 {
@@ -37,6 +34,10 @@ namespace Ecommerce.Infrastructure.Services
 
                 using (var smtpClient = new SmtpClient())
                 {
+                    if (_config == null)
+                    {
+                        throw new ArgumentNullException(nameof(_config));
+                    }
 
                     // SMTP configuration from appsetting.json file
                     var deliveryMethod = _config.GetSection("Smtp:DeliveryMethod").Value;

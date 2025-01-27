@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Ecommerce.Domain.Exceptions
 {
     [Serializable]
-    internal class EntityNotFoundException : Exception
+    public  class EntityNotFoundException : Exception
     {
         public EntityNotFoundException()
         {

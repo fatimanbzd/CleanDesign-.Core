@@ -22,6 +22,7 @@ namespace Ecommerce.Infrastructure
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+           
             //services.AddScoped<IEmailService, EmailService>();
             //services.AddScoped<ILoggerService, LoggerService>();
         }

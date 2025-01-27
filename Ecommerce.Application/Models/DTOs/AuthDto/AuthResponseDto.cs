@@ -1,4 +1,4 @@
-﻿namespace Ecommerce.API.DTOs
+﻿namespace Ecommerce.Application.Models.DTOs.AuthDto
 {
     public class AuthResponseDto
     {
