@@ -13,19 +13,5 @@ namespace Ecommerce.API.Controllers
         {
             _userService = userService;
         }
-
-        [HttpPost]
-        [Route("add")]
-        public async Task<ActionResult<bool>> Add(UserDto user)
-        {
-            if (ModelState.IsValid)
-            {
-                await _userService.Register(user);
-
-                return Ok(true);
-            }
-            return BadRequest(false);
-        }
-
     }
 }

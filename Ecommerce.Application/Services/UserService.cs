@@ -16,22 +16,6 @@ namespace Ecommerce.Application.Services
             _loggerService = loggerService;
         }
 
-        public async Task Register(UserDto userDto)
-        {
-            User user = new User(
-                userDto.Email,
-                userDto.Password,
-                userDto.FirstName,
-                userDto.LastName,
-                userDto.Phone,
-                EnumUserType.Customer
-
-            );
-
-            await _unitOfWork.Repository<User>().AddAsync(user);
-            await _unitOfWork.SaveChangesAsync();
-
-        }
 
         public async Task<IEnumerable<User>> GetAll()
             => await _unitOfWork.Repository<User>().GetAllAsync();

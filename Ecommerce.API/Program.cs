@@ -23,8 +23,8 @@ var appSettings = new ConfigurationBuilder()
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
     .Build();
 
-builder.Services.ConfigureInfrastructure();
 builder.Services.ConfigureApplication();
+builder.Services.ConfigureInfrastructure();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

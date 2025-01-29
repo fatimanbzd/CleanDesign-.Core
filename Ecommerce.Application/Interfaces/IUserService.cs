@@ -5,8 +5,6 @@ namespace Ecommerce.API.IServices
 {
     public interface IUserService
     {
-
-        Task Register(UserDto userDto);
         Task<IEnumerable<User>> GetAll();
     }
 }
