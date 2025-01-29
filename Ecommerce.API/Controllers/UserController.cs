@@ -20,7 +20,7 @@ namespace Ecommerce.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _userService.AddUser(user);
+                await _userService.Register(user);
 
                 return Ok(true);
             }

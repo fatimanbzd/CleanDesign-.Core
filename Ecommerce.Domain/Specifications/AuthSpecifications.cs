@@ -7,10 +7,8 @@ namespace Ecommerce.Domain.Specifications
     {
         public static BaseSpecification<User> GetUserByEmailAndPasswordSpec(string email, string password)
         {
-            return new BaseSpecification<User>(x => x.Email == email && x.PasswordHash == password && x.IsDeleted == false);
+            return new BaseSpecification<User>(x => x.Email == email && x.Password == password && x.IsDeleted == false);
         }
-
-
 
         //public static BaseSpecification<User> GetAllActiveUsersSpec()
         //{

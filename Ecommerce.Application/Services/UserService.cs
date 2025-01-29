@@ -16,7 +16,7 @@ namespace Ecommerce.Application.Services
             _loggerService = loggerService;
         }
 
-        public async Task AddUser(UserDto userDto)
+        public async Task Register(UserDto userDto)
         {
             User user = new User(
                 userDto.Email,

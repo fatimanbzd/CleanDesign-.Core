@@ -13,7 +13,8 @@ namespace Ecommerce.Domain.Entities
         public string LastName { get; set; }
         [Required]
         public  string Email { get; set; }
-        public  string PasswordHash { get; set; }
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
         public string? Phone { get; set; }
         [Required]
         public EnumUserType UserType { get; set; }
@@ -22,10 +23,10 @@ namespace Ecommerce.Domain.Entities
         public Guid? LastModifiedBy { get; set; }
         public DateTimeOffset? LastModifiedOn { get; set; }
         public bool IsDeleted { get; set; }= false;
-        public User(string email, string passwordHash, string firstName, string lastName, string phone, EnumUserType userType)
+        public User(string email, string password, string firstName, string lastName, string phone, EnumUserType userType)
         {
             Email = email;
-            PasswordHash = passwordHash;
+            Password = password;
             FirstName = firstName;
             LastName = lastName;
             Phone = phone;

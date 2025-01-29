@@ -1,6 +1,7 @@
 
 using System.Text;
 using Ecommerce.API.IServices;
+using Ecommerce.Application;
 using Ecommerce.Application.Core.Models;
 using Ecommerce.Application.Services;
 using Ecommerce.Domain.Core.Repositories;
@@ -23,6 +24,7 @@ var appSettings = new ConfigurationBuilder()
     .Build();
 
 builder.Services.ConfigureInfrastructure();
+builder.Services.ConfigureApplication();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

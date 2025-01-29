@@ -1,4 +1,5 @@
-﻿using Ecommerce.Application.Models.Responses;
+﻿using Ecommerce.Application.Models.DTOs.UserDto;
+using Ecommerce.Application.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace Ecommerce.Application.Interfaces
     public interface IAuthService
     {
         Task<LoginResponse> LogIn(string emil, string password);
+
+        Task Register(UserDto userDto);
     }
 }
