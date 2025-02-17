@@ -2,8 +2,8 @@
 using Ecommerce.Application.Interfaces;
 using Ecommerce.Application.Models.DTOs.AuthDto;
 using Ecommerce.Application.Models.DTOs.UserDto;
+using Ecommerce.Application.Models.Responses;
 using Ecommerce.Domain.Entities;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 
@@ -22,12 +22,20 @@ namespace Ecommerce.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> logIn(LoginDto loginModel)
         {
-            var user = _authService.LogIn(loginModel.userName, loginModel.password);
+            var user = _authService.LogIn(loginModel.email, loginModel.password);
             if (user == null)
             {
 
+                return BadRequest(ApiResponse.Error("User not found!"));
             }
-            return await Task.FromResult<IActionResult>(Ok());
+            return await Task.FromResult<IActionResult>(Ok(ApiResponse.Success( new LoginResponse
+                {
+                    FirstName = user.Result.FirstName,
+                    LastName = user.Result.LastName,
+                    Phone = user.Result.Phone,
+                    Token = user.Result.Token
+                }
+           )));
         }
 
         [HttpPost]
@@ -35,14 +43,12 @@ namespace Ecommerce.API.Controllers
         public async Task Register(UserDto userDto)
         {
             byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
+            string saltBase64 = Convert.ToBase64String(salt);
+
             User user = new User(
                 userDto.Email,
-                Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: userDto.Password!,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 100000,
-                numBytesRequested: 256 / 8)),
+                password: userDto.Password,
+                saltBase64,
                 userDto.FirstName,
                 userDto.LastName,
                 userDto.Phone,

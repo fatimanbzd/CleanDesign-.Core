@@ -1,6 +1,8 @@
-﻿using Ecommerce.Domain.Core.Repositories;
+﻿using Ecommerce.Application.Core.Services;
+using Ecommerce.Domain.Core.Repositories;
 using Ecommerce.Infrastructure.Data;
 using Ecommerce.Infrastructure.Repositpries;
+using Ecommerce.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -22,9 +24,9 @@ namespace Ecommerce.Infrastructure
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-           
-            //services.AddScoped<IEmailService, EmailService>();
-            //services.AddScoped<ILoggerService, LoggerService>();
+
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<ILoggerService, LoggerService>();
         }
 
         public static void MigrateDatabase(this IServiceProvider serviceProvider)

@@ -9,7 +9,7 @@ namespace Ecommerce.Application.Services
     public class UserService : IUserService
     {
         public IUnitOfWork _unitOfWork;
-        private readonly ILoggerService _loggerService;
+        public ILoggerService _loggerService;
         public UserService(IUnitOfWork unitOfWork, ILoggerService loggerService)
         {
             _unitOfWork = unitOfWork;

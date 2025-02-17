@@ -59,14 +59,6 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("EcommerceDomain",
-    policy => policy.WithOrigins("*")
-    .AllowAnyHeader()
-    .AllowAnyMethod());
-});
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.RequireHttpsMetadata = false;
@@ -81,8 +73,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("EcommerceDomain",
+    policy => policy.WithOrigins("*")
+    .AllowAnyHeader()
+    .AllowAnyMethod());
+});
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
+
 app.UseDeveloperExceptionPage();
 
 using (var scope = app.Services.CreateScope())

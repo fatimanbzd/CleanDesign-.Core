@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Infrastructure.Services
 {
-    public class EmailService
+    public class EmailService: IEmailService
     {
         private readonly IConfiguration _config;
         private readonly ILoggerService _loggerService;

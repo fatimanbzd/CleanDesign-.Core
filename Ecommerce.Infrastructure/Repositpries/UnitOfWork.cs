@@ -1,7 +1,6 @@
 ﻿using Ecommerce.Domain.Core.Models;
 using Ecommerce.Domain.Core.Repositories;
 using Ecommerce.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Infrastructure.Repositpries
 {
