@@ -86,7 +86,7 @@ namespace Ecommerce.Application.Services
             var validUser = await _unitOfWork.Repository<User>().FirstOrDefaultAsync(validateUserSpec);
             if (validUser == null)
             {
-                _loggerService.LogInfo("User not found");
+                _loggerService.LogInfo("userName Or password is invalid! ");
 
                 throw new EntityNotFoundException();
             }

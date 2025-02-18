@@ -22,41 +22,56 @@ namespace Ecommerce.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> logIn(LoginDto loginModel)
         {
-            var user = _authService.LogIn(loginModel.email, loginModel.password);
-            if (user == null)
+            try
             {
+                var user = _authService.LogIn(loginModel.email, loginModel.password);
+                if (user == null)
+                {
 
-                return BadRequest(ApiResponse.Error("User not found!"));
-            }
-            return await Task.FromResult<IActionResult>(Ok(ApiResponse.Success( new LoginResponse
+                    return BadRequest(ApiResponse.Error("User not found!"));
+                }
+                return await Task.FromResult<IActionResult>(Ok(ApiResponse.Success(new LoginResponse
                 {
                     FirstName = user.Result.FirstName,
                     LastName = user.Result.LastName,
                     Phone = user.Result.Phone,
                     Token = user.Result.Token
-                }
-           )));
+                })));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse.Error(ex.Message));
+            }
         }
 
         [HttpPost]
         [Route("register")]
-        public async Task Register(UserDto userDto)
+        public async Task<IActionResult> Register(UserDto userDto)
         {
-            byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
-            string saltBase64 = Convert.ToBase64String(salt);
+            try
+            {
+                byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
+                string saltBase64 = Convert.ToBase64String(salt);
 
-            User user = new User(
-                userDto.Email,
-                password: userDto.Password,
-                saltBase64,
-                userDto.FirstName,
-                userDto.LastName,
-                userDto.Phone,
-                EnumUserType.Customer
+                User user = new User(
+                    userDto.Email,
+                    password: userDto.Password,
+                    saltBase64,
+                    userDto.FirstName,
+                    userDto.LastName,
+                    userDto.Phone,
+                    EnumUserType.Customer
 
-            );
+                );
 
-            await _authService.Register(userDto);
+                await _authService.Register(userDto);
+                return Ok(ApiResponse.Success("Register is Succeed."));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiResponse.Error(ex.Message));
+
+            }
 
         }
     }
